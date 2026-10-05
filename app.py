@@ -11,91 +11,127 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- CUSTOM CSS FOR DARK GOLDEN LUXURY THEME ---
+# --- CUSTOM CSS FOR LIGHT ELEGANT / CREAM GOLD LUXURY THEME ---
 st.markdown("""
 <style>
+    /* Haupt-Hintergrund und Textfarbe */
     .stApp {
-        background-color: #121212;
-        color: #E0E0E0;
+        background-color: #F8F5EE !important;
+        color: #2C2A29 !important;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
+
+    /* Titel & Header */
     .title-header {
-        font-size: 2.2rem;
-        font-weight: 700;
-        color: #F3C649;
+        font-size: 2.3rem;
+        font-weight: 800;
+        color: #1A1A1A;
         margin-bottom: 0.2rem;
+        text-align: center;
+        letter-spacing: -0.5px;
     }
+    .title-header span {
+        color: #C5A059;
+    }
+
     .contact-bar {
-        background-color: #1A1A1A;
-        border: 1px solid #2D2D2D;
-        border-radius: 8px;
-        padding: 8px 16px;
-        font-size: 0.85rem;
-        color: #A0A0A0;
-        margin-bottom: 25px;
+        background-color: #FFFFFF;
+        border: 1px solid #EAE3D2;
+        border-radius: 50px;
+        padding: 10px 24px;
+        font-size: 0.88rem;
+        color: #666666;
+        margin: 0 auto 30px auto;
+        text-align: center;
+        max-width: 800px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     }
     .contact-bar span {
-        color: #F3C649;
-        font-weight: 600;
+        color: #B8860B;
+        font-weight: 700;
     }
+
     .section-header {
         font-size: 1.3rem;
-        font-weight: 600;
-        color: #F3C649;
-        margin-top: 20px;
+        font-weight: 700;
+        color: #2C2A29;
+        margin-top: 25px;
         margin-bottom: 15px;
     }
+
+    /* KPI Karten im hellen Look */
     .kpi-card {
-        background-color: #1A1A1A;
-        border: 1px solid #2D2D2D;
-        border-radius: 10px;
-        padding: 16px 20px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        background-color: #FFFFFF;
+        border: 1px solid #EAE3D2;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        transition: transform 0.2s ease;
     }
     .kpi-title {
         font-size: 0.85rem;
-        color: #888888;
-        font-weight: 500;
-        margin-bottom: 4px;
+        color: #777777;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
     }
     .kpi-value {
-        font-size: 1.7rem;
-        font-weight: 700;
-        color: #FFFFFF;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #1A1A1A;
     }
     .kpi-sub {
-        font-size: 0.8rem;
-        color: #2ED573;
+        font-size: 0.82rem;
+        color: #C5A059;
         font-weight: 600;
-        margin-top: 4px;
+        margin-top: 6px;
     }
     .kpi-sub.negative {
-        color: #FF4757;
+        color: #D9534F;
     }
+
+    /* Eingabefelder im edlen Look */
     div[data-baseweb="input"] {
-        background-color: #1A1A1A !important;
-        border-color: #333333 !important;
-        color: #FFFFFF !important;
+        background-color: #FFFFFF !important;
+        border-color: #E2DBC9 !important;
+        color: #1A1A1A !important;
+        border-radius: 8px !important;
     }
     div[data-baseweb="input"]:focus-within {
-        border-color: #F3C649 !important;
+        border-color: #C5A059 !important;
+        box-shadow: 0 0 0 1px #C5A059 !important;
     }
+
+    /* Sidebar Styling */
     section[data-testid="stSidebar"] {
-        background-color: #161616;
-        border-right: 1px solid #2D2D2D;
+        background-color: #F1ECE1 !important;
+        border-right: 1px solid #E2DBC9;
+    }
+    section[data-testid="stSidebar"] .stMarkdown h2 {
+        color: #B8860B !important;
+    }
+
+    /* Plotly Container Abrundung */
+    .stPlotlyChart {
+        background-color: #FFFFFF;
+        border-radius: 16px;
+        padding: 12px;
+        border: 1px solid #EAE3D2;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.04);
     }
 </style>
 """, unsafe_allow_html=True)
 
 # --- HEADER SECTION ---
-st.markdown('<div class="title-header">👑 Immobilien-Vollkosten & Ertragsrechner Pro</div>', unsafe_allow_html=True)
+st.markdown('<div class="title-header">Immobilien-Vollkosten & <span>Ertragsrechner</span></div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="contact-bar">Bereitgestellt von <span>Immobilien-Analyse Pro</span> | Vollständige Investitionsrechnung inklusive Risikopuffer, Instandhaltung & Anschlussfinanzierung</div>',
+    '<div class="contact-bar">Bereitgestellt von <span>Immobilien-Analyse Pro</span> — Vollständige Investitionsrechnung inklusive Risikopuffer, Instandhaltung & Anschlussfinanzierung</div>',
     unsafe_allow_html=True
 )
 
 # --- SIDEBAR: PARAMETERS ---
-st.sidebar.markdown("<h2 style='color: #F3C649;'>⚙️ Investitionsparameter</h2>", unsafe_allow_html=True)
+st.sidebar.markdown("<h2 style='font-size: 1.3rem; font-weight: 700;'>⚙️ Investitionsparameter</h2>", unsafe_allow_html=True)
 
 with st.sidebar.expander("🏢 1. Objekt- & Anschaffungskosten", expanded=True):
     flaeche = st.number_input("Wohnfläche (m²)", value=81.75, step=1.0)
@@ -169,15 +205,15 @@ cashflow_vor_steuer = effektive_miete_monat - bankrate_monat - betriebskosten_mo
 cashflow_nach_steuer = cashflow_vor_steuer + steuervorteil_monat_1
 
 # --- TOP INPUTS BAR ---
-st.markdown('<div class="section-header">⚙️ Investitionsparameter (Vollkosten-Überblick)</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-header">⚙️ Vollkosten-Überblick</div>', unsafe_allow_html=True)
 
 c1, c2, c3, c4 = st.columns(4)
 with c1:
     st.number_input("Gesamterwerbskosten (€)", value=round(gesamtkosten, 2), disabled=True)
 with c2:
-    st.number_input("Effektive Miete abzgl. Leerstand (€/Monat)", value=round(effektive_miete_monat, 2), disabled=True)
+    st.number_input("Miete abgl. Leerstand (€/Monat)", value=round(effektive_miete_monat, 2), disabled=True)
 with c3:
-    st.number_input("Monatlicher Cashflow n. St. (Jahr 1)", value=round(cashflow_nach_steuer, 2), disabled=True)
+    st.number_input("Cashflow n. St. (Jahr 1) (€)", value=round(cashflow_nach_steuer, 2), disabled=True)
 with c4:
     laufzeit_jahre = st.number_input("Betrachtungszeitraum (Jahre)", min_value=1, max_value=40, value=10, step=1)
 
@@ -208,7 +244,7 @@ for j in range(laufzeit_jahre + 1):
         if j > zinsbindung_jahre:
             aktueller_zins = anschlusszins
             
-        zins_anteil = schnelle_restschuld = aktuelle_restschuld * (aktueller_zins / 100.0)
+        zins_anteil = aktuelle_restschuld * (aktueller_zins / 100.0)
         tilgung_anteil = bankrate_jahr - zins_anteil
         aktuelle_restschuld = max(0.0, aktuelle_restschuld - tilgung_anteil)
         restschuld_verlauf.append(aktuelle_restschuld)
@@ -225,7 +261,7 @@ kumulierter_steuervorteil = steuervorteil_jahr_1 * laufzeit_jahre
 gesamter_vermoegenszuwachs = netto_eigenkapital_end + kumulierter_steuervorteil + kumulierter_cashflow - eigenkapital
 
 # --- KPI CARDS ---
-st.markdown('<div class="section-header">📊 Rendite & Wertentwicklungs-Übersicht</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-header">📊 Rendite & Wertentwicklung</div>', unsafe_allow_html=True)
 
 kpi1, kpi2, kpi3 = st.columns(3)
 
@@ -241,7 +277,7 @@ with kpi1:
 with kpi2:
     st.markdown(f'''
     <div class="kpi-card">
-        <div class="kpi-title">Prognostizierter Immobilienwert ({laufzeit_jahre} J.)</div>
+        <div class="kpi-title">Prognostizierter Wert ({laufzeit_jahre} J.)</div>
         <div class="kpi-value">{end_immobilienwert:,.2f} €</div>
         <div class="kpi-sub">Restschuld Bank: {end_restschuld:,.2f} €</div>
     </div>
@@ -257,19 +293,20 @@ with kpi3:
     </div>
     ''', unsafe_allow_html=True)
 
-# --- PLOTLY CHART ---
-st.markdown('<div class="section-header">📈 Vermögensaufbau & Schuldenabbau im Zeitverlauf</div>', unsafe_allow_html=True)
+# --- PLOTLY CHART (DESIGN ANGEPASST AN SCREENSHOT) ---
+st.markdown('<div class="section-header">📈 Wertentwicklung im Zeitverlauf</div>', unsafe_allow_html=True)
 
 fig = go.Figure()
 
+# Goldene Hauptkurve mit hellgoldenem Verlauf
 fig.add_trace(go.Scatter(
     x=zeit_jahre,
     y=immobilienwert_verlauf,
     mode='lines',
     name='Immobilienwert (inkl. Wertsteigerung)',
-    line=dict(color='#F3C649', width=3),
+    line=dict(color='#C5A059', width=3),
     fill='tozeroy',
-    fillcolor='rgba(243, 198, 73, 0.12)'
+    fillcolor='rgba(197, 160, 89, 0.15)'
 ))
 
 fig.add_trace(go.Scatter(
@@ -277,7 +314,7 @@ fig.add_trace(go.Scatter(
     y=restschuld_verlauf,
     mode='lines',
     name='Restschuld Bank',
-    line=dict(color='#E0E0E0', width=2)
+    line=dict(color='#888888', width=2, dash='dash')
 ))
 
 netto_ek_verlauf = [w - r for w, r in zip(immobilienwert_verlauf, restschuld_verlauf)]
@@ -285,25 +322,37 @@ fig.add_trace(go.Scatter(
     x=zeit_jahre,
     y=netto_ek_verlauf,
     mode='lines',
-    name='Netto-Eigenkapital (Objektwert - Schulden)',
-    line=dict(color='#2ED573', width=2.5)
+    name='Netto-Eigenkapital',
+    line=dict(color='#2B7A4B', width=2.5)
 ))
 
 fig.update_layout(
-    paper_bgcolor='#121212',
-    plot_bgcolor='#1A1A1A',
-    font=dict(color='#E0E0E0', family='Inter'),
-    margin=dict(l=20, r=20, t=30, b=20),
+    paper_bgcolor='#FFFFFF',
+    plot_bgcolor='#FFFFFF',
+    font=dict(color='#333333', family='Inter'),
+    margin=dict(l=30, r=30, t=30, b=30),
     legend=dict(
         orientation="h",
         yanchor="bottom",
         y=1.02,
         xanchor="right",
         x=1,
-        font=dict(size=12, color='#E0E0E0')
+        font=dict(size=12, color='#333333')
     ),
-    xaxis=dict(title="Laufzeit (Jahre)", gridcolor='#2D2D2D', zerolinecolor='#2D2D2D', dtick=1),
-    yaxis=dict(title="Wert in Euro (€)", gridcolor='#2D2D2D', zerolinecolor='#2D2D2D', tickformat=',.0f'),
+    xaxis=dict(
+        title="Laufzeit (Jahre)", 
+        gridcolor='#F0ECE1', 
+        zerolinecolor='#F0ECE1', 
+        showgrid=True,
+        dtick=1
+    ),
+    yaxis=dict(
+        title="Wert in Euro (€)", 
+        gridcolor='#F0ECE1', 
+        zerolinecolor='#F0ECE1', 
+        showgrid=True,
+        tickformat=',.0f'
+    ),
     height=450
 )
 
